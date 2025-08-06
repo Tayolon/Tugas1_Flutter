@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:latihan_11pplg2/customitem/customtext.dart';
 import 'package:latihan_11pplg2/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,7 +10,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
- 
   String statusLogin = "";
   TextEditingController txtUsername = TextEditingController();
   TextEditingController txtPasword = TextEditingController();
@@ -43,23 +43,22 @@ class _LoginPageState extends State<LoginPage> {
             //   ),
             // ),
 
-             // Image
+            // Image
             // Center(
             //   child: Container(
             //     width: 100,
             //     child: Image.asset('image/ikan.jpg'),
             //   ),
             // ),
-            
+
             // Username
             Container(
               margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: TextField(
+              child: Customtext(
+                label: "Username",
+                color: Colors.cyan,
+                pass: false,
                 controller: txtUsername,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                ),
               ),
             ),
             SizedBox(height: 15),
@@ -67,13 +66,11 @@ class _LoginPageState extends State<LoginPage> {
             // Password
             Container(
               margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: TextField(
+              child: Customtext(
+                label: "Password",
+                color: Colors.red,
+                pass: true,
                 controller: txtPasword,
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Enter password',
-                  border: OutlineInputBorder(),
-                ),
               ),
             ),
             SizedBox(height: 20),
@@ -84,17 +81,17 @@ class _LoginPageState extends State<LoginPage> {
               margin: EdgeInsets.only(top: 10),
               child: ElevatedButton(
                 onPressed: () {
-                  if(txtUsername.text == "admin" && txtPasword.text == "admin"){
+                  if (txtUsername.text == "admin" &&
+                      txtPasword.text == "admin") {
                     setState(() {
                       statusLogin = "Login Success";
                     });
-                  }
-                  else{ 
+                  } else {
                     setState(() {
                       statusLogin = "Login Failed";
                     });
                   }
-                  print("status "+ statusLogin);
+                  print("status " + statusLogin);
                 },
                 child: Text("Login"),
               ),
@@ -105,28 +102,31 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
               child: ElevatedButton(
                 child: Text("Register"),
-                  onPressed: () {
-                   Navigator.push(
-                     context,
-                     MaterialPageRoute(builder: (context) => RegisterPage()),
-                );
-               },
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()),
+                  );
+                },
               ),
             ),
           ],
         ),
       ),
-
     );
   }
 }
+
 class register_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Halaman Register")),
       body: Center(
-        child: Text("Masukkan Nama, Email, dan Jenis kelamin!", style: TextStyle(fontSize: 12)),
+        child: Text(
+          "Masukkan Nama, Email, dan Jenis kelamin!",
+          style: TextStyle(fontSize: 12),
+        ),
       ),
     );
   }
