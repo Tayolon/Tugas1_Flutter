@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:latihan_11pplg2/controllers/calculator_controller.dart';
 import 'package:latihan_11pplg2/customitem/custominput.dart';
 import 'package:latihan_11pplg2/customitem/customtext.dart';
+import 'package:latihan_11pplg2/routes/route.dart';
 
 class CalculatorPage extends StatelessWidget {
   CalculatorPage({super.key});
@@ -30,6 +31,7 @@ class CalculatorPage extends StatelessWidget {
               color: Colors.green,
               pass: false,
               controller: calculatorController.txtAngka1,
+              isNumber: true,
             ),
             SizedBox(height: 10),
             Customtext(
@@ -37,6 +39,7 @@ class CalculatorPage extends StatelessWidget {
               color: Colors.green,
               pass: false,
               controller: calculatorController.txtAngka2,
+              isNumber: true,
             ),
             SizedBox(height: 20),
             Row(
@@ -88,9 +91,7 @@ class CalculatorPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                calculatorController.txtAngka1.clear();
-                calculatorController.txtAngka2.clear();
-                calculatorController.textHasil.value = '';
+                Get.toNamed(AppRoutes.FootballPage);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey,

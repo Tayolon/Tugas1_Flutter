@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'football_player_controller.dart';
+import 'edit_football_player.dart';
+
+class PlayerListPage extends StatelessWidget {
+  PlayerListPage({super.key});
+
+  final FootballPlayerController playerController =
+      Get.put(FootballPlayerController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Daftar Pemain")),
+      body: Obx(() {
+        return ListView.builder(
+          itemCount: playerController.players.length,
+          itemBuilder: (context, index) {
+            final p = playerController.players[index];
+            return ListTile(
+              leading: Image.asset(p.imageAsset, width: 48, height: 48),
+              title: Text(p.nama),
+              subtitle: Text("${p.posisi} • ${p.nomorPunggung}"),
+              onTap: () => Get.to(() => EditPlayerPage(index: index)),
+            );
+          },
+        );
+      }),
+    );
+  }
+}
