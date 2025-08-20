@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:latihan_11pplg2/controllers/football_player_controller.dart';
-
+import 'package:latihan_11pplg2/routes/route.dart';
 class EditPlayerPage extends StatelessWidget {
   final int index;
-  final FootballPlayerController playerController = Get.find();
+  final FootballPlayerController playerController = Get.put(
+    FootballPlayerController(),
+  );
 
   EditPlayerPage({super.key, required this.index});
 

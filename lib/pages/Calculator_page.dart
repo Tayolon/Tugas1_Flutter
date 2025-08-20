@@ -91,14 +91,16 @@ class CalculatorPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed(AppRoutes.FootballPage);
+                calculatorController.txtAngka1.clear();
+                calculatorController.txtAngka2.clear();
+                calculatorController.textHasil.value = "";
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey,
                 minimumSize: Size(120, 45),
               ),
               child: Text("Clear"),
-            ),
+            ),  
           ],
         ),
       ),
